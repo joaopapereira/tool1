@@ -62,7 +62,7 @@ release:
 
   # You can disable this pipe in order to not upload any artifacts.
   # Defaults to false.
-  disable: true
+  disable: false
 
 changelog:
   # Set it to true if you wish to skip the changelog generation.
