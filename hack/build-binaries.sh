@@ -10,7 +10,7 @@ VERSION="${1:-`get_latest_git_tag`}"
 
 # makes builds reproducible
 export CGO_ENABLED=0
-LDFLAGS="-X github.com/joaopapereira/tool1.Version=$VERSION -buildid="
+LDFLAGS="-X main.Version=$VERSION -buildid="
 
 
 GOOS=darwin GOARCH=amd64 go build -ldflags="$LDFLAGS" -trimpath -o tool1-darwin-amd64 ./...
