@@ -6,6 +6,7 @@ on:
 jobs:
   validate-github-action:
     runs-on: ubuntu-latest
+    environment: production
     steps:
 #      - uses: actions/github-script@v5
 #        with:
@@ -24,4 +25,4 @@ jobs:
           curl -X POST https://api.github.com/repos/joaopapereira/releaser/dispatches \
           -H 'Accept: application/vnd.github.everest-preview+json' \
           -u ${{ secrets.ACCESS_TOKEN }} \
-          --data '{"event_type": "tool_released", "client_payload": { "tagName": "${{ github.event.release.tag_name }}", "owner": "${{ github.event.release.owner }}", "repo": "" }}'
+          --data '{"event_type": "tool_released", "client_payload": { "tagName": "${{ github.event.release.tag_name }}", "owner": "${{ github.repository_owner }}", "repo": "${{ github.repository }}" }}'
