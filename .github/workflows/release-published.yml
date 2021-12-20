@@ -1,0 +1,27 @@
+name: Checks after any release is published
+on:
+  release:
+    types: [ 'published' ]
+
+jobs:
+  validate-github-action:
+    runs-on: ubuntu-latest
+    steps:
+#      - uses: actions/github-script@v5
+#        with:
+#          github-token: ${{secrets.GITHUB_TOKEN}}
+#          result-encoding: string
+#          script: |
+#            const { owner, repo } = context.repo;
+#            await octokit.rest.actions.createWorkflowDispatch({
+#              owner,
+#              "releaser",
+#              "published_release",
+#              "main",
+#              "inputs": "{}"
+#            });
+      - run: |
+          curl -X POST https://api.github.com/repos/joaopapereira/releaser/dispatches \
+          -H 'Accept: application/vnd.github.everest-preview+json' \
+          -u ${{ secrets.ACCESS_TOKEN }} \
+          --data '{"event_type": "tool_released", "client_payload": { "tagName": "'"${{ github.event.release.tag_name }}"'", "owner": "'"${{github.event.release.owner}}"'", "repo": "'""'" }}'
