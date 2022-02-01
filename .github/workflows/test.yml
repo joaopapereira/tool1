@@ -1,0 +1,23 @@
+name: test
+
+"on":
+  workflow_dispatch:
+jobs:
+  goreleaser:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Create Issues Summary
+        run: |
+          echo "SUMMARY='Something'" >> $GITHUB_ENV
+      - name: Success with contains
+        if: success() && contains(${{ env.SUMMARY }}, "Something")
+        run: |
+          echo "with contains"
+          echo "${{ env.SUMMARY }}"
+      - name: Success without contains
+        if: success() && !contains(${{ env.SUMMARY }}, "Something")
+        run: |
+          echo "without contains"
+          echo "${{ env.SUMMARY }}"
