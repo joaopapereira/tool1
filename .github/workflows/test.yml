@@ -9,14 +9,15 @@ jobs:
       - name: Create Issues Summary
         run: |
           echo "SUMMARY='Something'" >> $GITHUB_ENV
+          echo ::set-output name=summary::'something plus something else'
       - name: Success with contains
-        if: success() && ${{ env.SUMMARY }} == 'Something'
+        if: steps.step1.outputs.summary == ''
         run: |
           echo ${{ env.SUMMARY == 'Something' }}
           echo "with contains"
           echo "${{ env.SUMMARY }}"
       - name: Success without contains
-        if: success() && ${{ env.SUMMARY }} != 'Something'
+        if: steps.step1.outputs.summary == 'something plus something else'
         run: |
           echo ${{ env.SUMMARY != 'Something' }}
           echo "without contains"
