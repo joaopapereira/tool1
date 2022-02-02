@@ -9,7 +9,7 @@ jobs:
       - name: Create Issues Summary
         run: |
           echo "SUMMARY='Something'" >> $GITHUB_ENV
-          echo ::set-output name=summary::'something plus something else'
+          echo '::set-output name=summary::something plus something else'
       - name: Success with contains
         if: steps.step1.outputs.summary == ''
         run: |
