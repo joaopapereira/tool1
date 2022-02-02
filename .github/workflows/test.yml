@@ -12,12 +12,12 @@ jobs:
       - name: Success with contains
         if: ${{ success() && env.SUMMARY == 'Something' }}) == 'true'
         run: |
-          echo ${{ env.SUMMARY == 'Something' }})
+          echo ${{ env.SUMMARY == 'Something' }}
           echo "with contains"
           echo "${{ env.SUMMARY }}"
       - name: Success without contains
         if: ${{ success() && env.SUMMARY != 'Something' }} == 'true'
         run: |
-          echo ${{ env.SUMMARY != 'Something' }})
+          echo ${{ env.SUMMARY != 'Something' }}
           echo "without contains"
           echo "${{ env.SUMMARY }}"
