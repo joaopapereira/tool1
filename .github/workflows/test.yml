@@ -15,6 +15,7 @@ jobs:
         run: |
           echo ${{ env.SUMMARY == 'Something' }}
           echo "with contains"
+          echo "Summary was: ${{ steps.step1.outputs.summary }} <-"
           echo "${{ env.SUMMARY }}"
       - name: Success without contains
         if: steps.step1.outputs.summary == 'something plus something else'
