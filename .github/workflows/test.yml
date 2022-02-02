@@ -10,12 +10,12 @@ jobs:
         run: |
           echo "SUMMARY='Something1'" >> $GITHUB_ENV
       - name: Success with contains
-        if: ${{ success() && env.SUMMARY == 'Something' }})
+        if: ${{ success() && env.SUMMARY == 'Something' }}) == 'true'
         run: |
           echo "with contains"
           echo "${{ env.SUMMARY }}"
       - name: Success without contains
-        if: ${{ success() && env.SUMMARY == 'Something' }}
+        if: ${{ success() && env.SUMMARY != 'Something' }} == 'true'
         run: |
           echo "without contains"
           echo "${{ env.SUMMARY }}"
