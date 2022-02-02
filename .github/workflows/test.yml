@@ -10,12 +10,14 @@ jobs:
         run: |
           echo "SUMMARY='Something'" >> $GITHUB_ENV
           echo '::set-output name=summary::something plus something else'
+          echo '::set-output name=action_echo::disabled'
       - name: Success with contains
         if: steps.step1.outputs.summary == ''
         run: |
           echo ${{ env.SUMMARY == 'Something' }}
           echo "with contains"
           echo "Summary was: ${{ steps.step1.outputs.summary }} <-"
+          echo "action echo: ${{ steps.step1.outputs.action_echo }} <-"
           echo "${{ env.SUMMARY }}"
       - name: Success without contains
         if: steps.step1.outputs.summary == 'something plus something else'
