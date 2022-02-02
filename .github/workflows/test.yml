@@ -8,7 +8,7 @@ jobs:
     steps:
       - name: Create Issues Summary
         run: |
-          echo "SUMMARY='Something1'" >> $GITHUB_ENV
+          echo "SUMMARY='Something'" >> $GITHUB_ENV
       - name: Success with contains
         if: ${{ env.SUMMARY == 'Something' }})
         run: |
