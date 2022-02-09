@@ -1,6 +1,6 @@
 $version=$(select-string -Path Dockerfile -Pattern "ENV DISTRIBUTION_VERSION").ToString().split()[-1].SubString(1)
-docker tag registry:$version stefanscherer/registry-windows:$version-1607-deprecated
-docker push stefanscherer/registry-windows:$version-1607-deprecated
+docker tag registry:$version joaopapereira/registry-windows:$version-1607-deprecated
+docker push joaopapereira/registry-windows:$version-1607-deprecated
 
 npm install -g rebase-docker-image
 rebase-docker-image stefanscherer/registry-windows:$version-1607-deprecated -t stefanscherer/registry-windows:$version-1803 -b mcr.microsoft.com/windows/nanoserver:1803
