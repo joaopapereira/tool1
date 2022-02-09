@@ -35,5 +35,6 @@ jobs:
     - name: Building image
       shell: pwsh
       run: |
-        .\registry\build.ps1
+        cd registry
+        .\build.ps1
 
