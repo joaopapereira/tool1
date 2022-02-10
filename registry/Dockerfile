@@ -1,13 +1,11 @@
-FROM golang as build
+FROM golang:1.17-windowsservercore-ltsc2022 as build
 
 SHELL ["powershell", "-Command", "$ErrorActionPreference = 'Stop'; $ProgressPreference = 'SilentlyContinue';"]
 
 ENV DOCKER_BUILDTAGS include_oss include_gcs
 ENV DISTRIBUTION_VERSION v2.8.0
 
-RUN mkdir src\github.com\docker ; \
-    cd src\github.com\docker ; \
-    git clone -q https://github.com/docker/distribution ; \
+RUN git clone -q https://github.com/docker/distribution ; \
     cd distribution ; \
     git checkout -q $env:DISTRIBUTION_VERSION ; \
     go mod tidy ; \
