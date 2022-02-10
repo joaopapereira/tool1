@@ -10,6 +10,7 @@ RUN mkdir src\github.com\docker ; \
     git clone -q https://github.com/docker/distribution ; \
     cd distribution ; \
     git checkout -q $env:DISTRIBUTION_VERSION ; \
+    go mod tidy ; \
     go build -o registry.exe cmd/registry/main.go
 
 
