@@ -4,7 +4,9 @@ SHELL ["powershell", "-Command", "$ErrorActionPreference = 'Stop'; $ProgressPref
 
 ENV DOCKER_BUILDTAGS include_oss include_gcs
 ENV DISTRIBUTION_VERSION v2.8.0
+ENV GO111MODULE off
 
+RUN $GOPATH/src/github.com/distribution/distribution
 RUN git clone -q https://github.com/docker/distribution ; \
     cd distribution ; \
     git checkout -q $env:DISTRIBUTION_VERSION ; \
