@@ -15,7 +15,7 @@ RUN mkdir src\github.com\docker ; \
 
 FROM mcr.microsoft.com/windows/nanoserver:ltsc2022
 
-COPY --from=build /gopath/src/github.com/docker/distribution/registry.exe /registry.exe
+COPY --from=build /go/src/github.com/docker/distribution/registry.exe /registry.exe
 COPY config.yml /config/config.yml
 
 EXPOSE 5000
