@@ -37,4 +37,5 @@ jobs:
       run: |
         cd registry
         .\build.ps1
+        .\push.ps1
 
